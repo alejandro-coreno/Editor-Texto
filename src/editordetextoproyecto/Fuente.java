@@ -146,8 +146,7 @@ public class Fuente extends javax.swing.JDialog {
     private void cambiarFuente(){
        Font f = lblPrueba.getFont();
        lblPrueba.setFont(new Font(String.valueOf(dlm.getElementAt(lstFuentes.getSelectedIndex())),Font.PLAIN,f.getSize()));
-       
-       
+
     }
     
     
