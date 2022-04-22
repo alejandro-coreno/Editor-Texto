@@ -505,17 +505,28 @@ public class Main extends javax.swing.JFrame implements Printable {
 
     private void mnEditDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnEditDeshacerActionPerformed
         Stack pila = new Stack();
+        String datospila = "";
         deshacer = true;
         contenidoCaja = jTextArea.getText();
         String arregloLLeno[] = contenidoCaja.split(" ");
         for (int i = 0; i<arregloLLeno.length; i++){
             pila.push(arregloLLeno[i]);
         }
+      
+        
         while((!pila.empty() && (deshacer == true))){
             pila.pop();
-            jTextArea.setText(""+ pila);
             deshacer = false;
         }
+        
+        for(Object elemento : pila){
+            datospila += elemento+" ";
+            jTextArea.setText(datospila + " "); 
+            System.out.println(pila.size());
+        }
+         if(pila.size() == 1){
+                jTextArea.setText(" ");
+            }
     }//GEN-LAST:event_mnEditDeshacerActionPerformed
 
     private void mnArchivoNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArchivoNewActionPerformed
