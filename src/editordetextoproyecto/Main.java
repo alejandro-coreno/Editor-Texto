@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JColorChooser;
@@ -115,7 +116,7 @@ public class Main extends javax.swing.JFrame implements Printable {
         jTextArea.setRows(5);
         jScrollPane1.setViewportView(jTextArea);
 
-        jToolBar1.setBackground(new java.awt.Color(51, 153, 255));
+        jToolBar1.setBackground(new java.awt.Color(5, 44, 72));
         jToolBar1.setFloatable(false);
         jToolBar1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.setRollover(true);
@@ -164,6 +165,11 @@ public class Main extends javax.swing.JFrame implements Printable {
         btnImprimir.setFocusable(false);
         btnImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnImprimir);
         jToolBar1.add(JS4);
 
@@ -236,23 +242,41 @@ public class Main extends javax.swing.JFrame implements Printable {
         jToolBar1.add(JS11);
 
         btnColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/color.jpg"))); // NOI18N
+        btnColor.setToolTipText("Color Ctrl + J ");
         btnColor.setFocusable(false);
         btnColor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnColor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColorActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnColor);
         jToolBar1.add(JS12);
 
         btnFuente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/fuente_tamaño.png"))); // NOI18N
+        btnFuente.setToolTipText("Fuente y tamaño Ctrl + F  ");
         btnFuente.setFocusable(false);
         btnFuente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFuente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnFuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFuenteActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnFuente);
         jToolBar1.add(JS13);
 
         btnAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ayuda.png"))); // NOI18N
+        btnAyuda.setToolTipText("Accesos directos Ctrl + F1 ");
         btnAyuda.setFocusable(false);
         btnAyuda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAyuda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAyudaActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnAyuda);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -389,6 +413,7 @@ public class Main extends javax.swing.JFrame implements Printable {
 
         mnDiseño.setText("Diseño");
 
+        mnDiseñoColor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_J, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnDiseñoColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/color.jpg"))); // NOI18N
         mnDiseñoColor.setText("Color");
         mnDiseñoColor.addActionListener(new java.awt.event.ActionListener() {
@@ -422,6 +447,7 @@ public class Main extends javax.swing.JFrame implements Printable {
         });
         mnhelp.add(mnVerAyuda);
 
+        mnAcerca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnAcerca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/acerca-de.png"))); // NOI18N
         mnAcerca.setText("Acerda de...");
         mnAcerca.addActionListener(new java.awt.event.ActionListener() {
@@ -478,7 +504,18 @@ public class Main extends javax.swing.JFrame implements Printable {
     }//GEN-LAST:event_mnEditSeleccionarActionPerformed
 
     private void mnEditDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnEditDeshacerActionPerformed
-        
+        Stack pila = new Stack();
+        deshacer = true;
+        contenidoCaja = jTextArea.getText();
+        String arregloLLeno[] = contenidoCaja.split(" ");
+        for (int i = 0; i<arregloLLeno.length; i++){
+            pila.push(arregloLLeno[i]);
+        }
+        while((!pila.empty() && (deshacer == true))){
+            pila.pop();
+            jTextArea.setText(""+ pila);
+            deshacer = false;
+        }
     }//GEN-LAST:event_mnEditDeshacerActionPerformed
 
     private void mnArchivoNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnArchivoNewActionPerformed
@@ -559,9 +596,6 @@ public class Main extends javax.swing.JFrame implements Printable {
         Fuente F = new Fuente(this,true);
         F.setTextArea(jTextArea);
         F.setVisible(true);
-//        Fuent F = new Fuent(this,true);
-//        F.setTextArea(jTextArea);
-//        F.setVisible(true);
     }//GEN-LAST:event_mnDiseñoFuenteActionPerformed
 
     private void mnVerAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnVerAyudaActionPerformed
@@ -614,6 +648,34 @@ public class Main extends javax.swing.JFrame implements Printable {
         }
         
     }//GEN-LAST:event_mnArchivoImprimirActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        try {
+            PrinterJob gap = PrinterJob.getPrinterJob();
+            gap.setPrintable(this);
+            boolean top = gap.printDialog();
+            if (top) {
+                gap.print();
+            }
+        } catch (PrinterException pex) {
+            JOptionPane.showMessageDialog(null, "ERROR DE PROGRAMA", "Error\n" + pex, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
+        this.color();
+    }//GEN-LAST:event_btnColorActionPerformed
+
+    private void btnFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuenteActionPerformed
+        Fuente F = new Fuente(this,true);
+        F.setTextArea(jTextArea);
+        F.setVisible(true);
+    }//GEN-LAST:event_btnFuenteActionPerformed
+
+    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
+        Ayuda A = new Ayuda(this,true);
+        A.setVisible(true);
+    }//GEN-LAST:event_btnAyudaActionPerformed
     public void Openfile(){
         FileChooserOpen.setDialogTitle("Abrir documento");
         int opcion = this.FileChooserOpen.showOpenDialog(this);
@@ -770,7 +832,8 @@ public class Main extends javax.swing.JFrame implements Printable {
     private String valor;
     private boolean nuevo = false;
     private int option;
-    
+    private String contenidoCaja;
+    private boolean deshacer = false;
     @Override
     public int print(Graphics graf, PageFormat pagfor, int index) throws PrinterException {
         if (index > 0) {
@@ -783,6 +846,7 @@ public class Main extends javax.swing.JFrame implements Printable {
         jTextArea.printAll(graf);
         return PAGE_EXISTS;
     }
+    
 }
     
 

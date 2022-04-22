@@ -47,7 +47,7 @@ public class Fuente extends javax.swing.JDialog {
         lblFuente.setForeground(new java.awt.Color(255, 255, 255));
         lblFuente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFuente.setText("Fuente");
-        jPanel1.add(lblFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 200, -1));
+        jPanel1.add(lblFuente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 230, -1));
 
         lstFuentes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -56,21 +56,21 @@ public class Fuente extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(lstFuentes);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 230, 160));
 
         lblTamaño.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTamaño.setForeground(new java.awt.Color(255, 255, 255));
         lblTamaño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTamaño.setText("Tamaño");
-        jPanel1.add(lblTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 80, -1));
+        jPanel1.add(lblTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 100, -1));
 
         lblPrueba.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblPrueba.setForeground(new java.awt.Color(255, 255, 255));
         lblPrueba.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPrueba.setText("Este es un texto de prueba");
-        jPanel1.add(lblPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 440, 100));
+        lblPrueba.setText("Es un texto de prueba");
+        jPanel1.add(lblPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 440, 100));
 
-        btnaplicar.setBackground(new java.awt.Color(102, 102, 102));
+        btnaplicar.setBackground(new java.awt.Color(255, 255, 255));
         btnaplicar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnaplicar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/aplicar1.jpg"))); // NOI18N
         btnaplicar.setText("Aplicar");
@@ -79,18 +79,18 @@ public class Fuente extends javax.swing.JDialog {
                 btnaplicarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnaplicar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, -1, -1));
+        jPanel1.add(btnaplicar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 100, -1));
 
-        cmbTamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "14", "16", "20", "32" }));
+        cmbTamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "16", "20", "24", "32" }));
         cmbTamaño.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbTamañoItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 70, -1));
+        jPanel1.add(cmbTamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 100, -1));
 
         lblfontImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Fuente2.1.png"))); // NOI18N
-        jPanel1.add(lblfontImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 400));
+        jPanel1.add(lblfontImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
